@@ -118,12 +118,19 @@ public class NvgTextTrailingSpaces {
 
             nvgBeginFrame(nvg, effecWidth, effecHeight, Math.max(contentWidth.get(0), contentHeight.get(0)));
 
-            ByteBuffer text = memUTF8("Spaces:               ", false);
-            drawText(50, 50, text, 18, 0, "sans", RED, NVG_ALIGN_CENTER);
+            ByteBuffer text = memUTF8("Following text has trailing spaces:", false);
+            int FONT_SIZE = 18;
+            drawText(320, 50, text, FONT_SIZE, 0, "sans", RED, NVG_ALIGN_CENTER);
+            memFree(text);
+            text = memUTF8("Text              ", false);
+            drawText(320, 50 + FONT_SIZE, text, FONT_SIZE, 0, "sans", RED, NVG_ALIGN_CENTER);
             memFree(text);
             // show what this would look like if spaces were trimmed
-            text = memUTF8("Nospcs:", false);
-            drawText(50, 75, text, 18, 0, "sans", RED, NVG_ALIGN_CENTER);
+            text = memUTF8("Following text has no trailing spaces:", false);
+            drawText(320, 50 + FONT_SIZE * 2, text, FONT_SIZE, 0, "sans", RED, NVG_ALIGN_CENTER);
+            memFree(text);
+            text = memUTF8("Text", false);
+            drawText(320, 50 + FONT_SIZE * 3, text, FONT_SIZE, 0, "sans", RED, NVG_ALIGN_CENTER);
             memFree(text);
 
             nvgEndFrame(nvg);
